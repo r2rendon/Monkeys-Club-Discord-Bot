@@ -143,6 +143,8 @@ bot.on('message', async message => {
         return;
     } else if (message.content.startsWith(`${prefix}name`)) {
         return message.channel.send('Elmer Homero :sunglasses:')
+    } else if (message.content.startsWith(`${prefix}leave`)) {
+        return message.member.voice.channel.disconnect();
     } else {
         message.channel.send("You need to enter a valid command!");
     }
@@ -169,4 +171,8 @@ bot.on('message', async message => {
     //         }
     //         break;
     // }
+})
+
+bot.on('disconnect', () => {
+
 })
