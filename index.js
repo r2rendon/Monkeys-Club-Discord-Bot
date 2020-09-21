@@ -1,6 +1,7 @@
-const discord = require('discord.js')
-const bot = new discord.Client()
-require('dotenv').config()
+const discord = require('discord.js');
+const bot = new discord.Client();
+require('dotenv').config();
+const ytdl = require('ytdl-core');
 
 const token = process.env.BOT_TOKEN;
 const prefix = '?';
@@ -10,6 +11,14 @@ bot.login(token);
 
 bot.on('ready', () => {
     console.log('Connected to Monkeys Bot!');
+})
+
+bot.once('reconnecting', () => {
+    console.log('Reconnecting!');
+})
+
+bot.once('disconnect', () => {
+    console.log('Disconnected');
 })
 
 bot.on('message', message => {
